@@ -20,8 +20,8 @@ def mobile_management():
 
     options = UiAutomator2Options().load_capabilities({
         "platformName": "android",
-        "platformVersion": "12.0",
-        "deviceName": "Google Pixel 6",
+        "platformVersion": "10.0",
+        "deviceName": "Google Pixel 4",
 
         # Set URL of the application under test
         "app": "bs://sample.app",
@@ -47,5 +47,5 @@ def mobile_management():
     yield
     attach.add_screenshot(browser)
     attach.add_xml(browser)
-    attach.add_video(browser)
+    # attach.add_video(browser)
     browser.quit()
