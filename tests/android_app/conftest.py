@@ -13,7 +13,7 @@ def load_env():
     load_dotenv()
 
 
-@pytest.fixture(scope='function', autouse=True)
+@pytest.fixture(scope='session', autouse=True)
 def mobile_management():
     user_name = os.getenv("USER_NAME")
     access_key = os.getenv("ACCESS_KEY")
@@ -47,5 +47,5 @@ def mobile_management():
     yield
     attach.add_screenshot(browser)
     attach.add_xml(browser)
-    attach.add_video(browser)
+    # attach.add_video(browser)
     browser.quit()
