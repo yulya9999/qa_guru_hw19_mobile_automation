@@ -13,12 +13,11 @@ def load_env():
     load_dotenv()
 
 
-user_name = os.getenv("USER_NAME")
-access_key = os.getenv("ACCESS_KEY")
-
-
 @pytest.fixture(scope='function', autouse=True)
 def mobile_management():
+    user_name = os.getenv("USER_NAME")
+    access_key = os.getenv("ACCESS_KEY")
+
     options = UiAutomator2Options().load_capabilities({
         "platformName": "android",
         "platformVersion": "9.0",
@@ -39,11 +38,11 @@ def mobile_management():
         }
     })
 
-    # browser.config.driver = webdriver.Remote("http://hub.browserstack.com/wd/hub", options=options)
-    browser.config.driver_remote_url = 'http://hub.browserstack.com/wd/hub'
-    browser.config.driver_options = options
+    browser.config.driver = webdriver.Remote("http://hub.browserstack.com/wd/hub", options=options)
+    # browser.config.driver_remote_url = 'http://hub.browserstack.com/wd/hub'
+    # browser.config.driver_options = options
 
-    browser.config.timeout = float(os.getenv('timeout', '10.0'))
+    browser.config.timeout = float(os.getenv('TIMEOUT'))
 
     yield
     attach.add_screenshot(browser)
