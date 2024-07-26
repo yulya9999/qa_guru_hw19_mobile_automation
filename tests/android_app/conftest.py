@@ -20,8 +20,8 @@ def mobile_management():
 
     options = UiAutomator2Options().load_capabilities({
         "platformName": "android",
-        "platformVersion": "9.0",
-        "deviceName": "Google Pixel 3",
+        "platformVersion": "12.0",
+        "deviceName": "Google Pixel 6",
 
         # Set URL of the application under test
         "app": "bs://sample.app",
