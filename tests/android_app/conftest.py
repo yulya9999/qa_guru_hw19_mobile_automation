@@ -13,15 +13,15 @@ def load_env():
     load_dotenv()
 
 
-@pytest.fixture(scope='session', autouse=True)
+@pytest.fixture(scope='function', autouse=True)
 def mobile_management():
     user_name = os.getenv("USER_NAME")
     access_key = os.getenv("ACCESS_KEY")
 
     options = UiAutomator2Options().load_capabilities({
         "platformName": "android",
-        "platformVersion": "10.0",
-        "deviceName": "Google Pixel 4",
+        'platformVersion': '9.0',
+        'deviceName': 'Google Pixel 3',
 
         # Set URL of the application under test
         "app": "bs://sample.app",
@@ -39,8 +39,6 @@ def mobile_management():
     })
 
     browser.config.driver = webdriver.Remote("http://hub.browserstack.com/wd/hub", options=options)
-    # browser.config.driver_remote_url = 'http://hub.browserstack.com/wd/hub'
-    # browser.config.driver_options = options
 
     browser.config.timeout = float(os.getenv('TIMEOUT'))
 
