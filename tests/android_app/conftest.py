@@ -3,7 +3,7 @@ from appium.options.android import UiAutomator2Options
 from selene import browser
 import os
 
-from selenium import webdriver
+from appium import webdriver
 from dotenv import load_dotenv
 from utils import attach
 
